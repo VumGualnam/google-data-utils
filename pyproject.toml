@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "google-data-utils"
+version = "0.1.0"
+description = "Load public Google Sheets, CSV, and Excel files into pandas"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Zomi Learner"}
+]
+dependencies = [
+    "pandas>=1.5",
+    "openpyxl>=3.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8"
+]
+
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.urls]
+Homepage = "https://github.com/ZomiLearner/google-data-utils"
