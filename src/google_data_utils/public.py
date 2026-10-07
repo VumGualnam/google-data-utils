@@ -27,12 +27,15 @@ def google_excel_to_df(url, **kwargs):
     )
 
 
-def google_sheet_to_df(url, **kwargs):
-    sheet_id = extract_sheet_id(url)
+def google_sheet_to_df(sheet_url, **kwargs):
+    # sheet_id = extract_sheet_id(url)
 
-    csv_url = (
-        f"https://docs.google.com/spreadsheets/d/"
-        f"{sheet_id}/export?format=csv"
-    )
+    # This only works for the first individual/worksheet
+    # csv_url = (
+    #     f"https://docs.google.com/spreadsheets/d/"
+    #     f"{sheet_id}/export?format=csv"
+    # )
 
-    return pd.read_csv(csv_url, **kwargs)
+    modified_sheet_url = sheet_url.split("#")[0].replace("edit?", "export?format=csv&")
+
+    return pd.read_csv(modified_sheet_url, **kwargs)
